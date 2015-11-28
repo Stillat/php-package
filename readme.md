@@ -61,7 +61,7 @@ For example, we could easily state that our package needs at least PHP 5.6 when 
 You can choose which autoloader to use by supplying a value for the `--psr` option. The following table lists the valid values you can use:
 
 | Autoloader | Value | Example |
-|--|--|--|
+|---|---|---|
 | PSR-0 | `psr0` | `newup a stillat/php-package <output_dir> vendor/package --psr=psr0` |
 | PSR-4 | `psr4` | `newup a stillat/php-package <output_dir> vendor/package --psr=psr4` |
 
