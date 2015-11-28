@@ -5,6 +5,7 @@ PHP Package is a template for the [NewUp](https://github.com/newup/newup) packag
 * [Installation](#installation)
 * [General Usage](#usage)
 * [Specifying a PHP Version](#phpv)
+* [PSR-0 / PSR-4](#psr)
 * [PHPUnit Integration](#phpunit)
 * [TravisCI Integration](#travis)
 * [License](#license)
@@ -54,6 +55,32 @@ For example, we could easily state that our package needs at least PHP 5.6 when 
 
 `newup a stillat/php-package vendor/package <output_directory> ">=5.6"`
 
+<a name="psr"></a>
+## PSR-0 / PSR-4
+
+You can choose which autoloader to use by supplying a value for the `--psr` option. The following table lists the valid values you can use:
+
+| Autoloader | Value | Example |
+|--|--|--|
+| PSR-0 | `psr0` | `newup a stillat/php-package <output_dir> vendor/package --psr=psr0` |
+| PSR-4 | `psr4` | `newup a stillat/php-package <output_dir> vendor/package --psr=psr4` |
+
+The PSR-4 autoloader is selected by default.
+
+When choosing to use the PSR-0 autoloader, directory scaffolding will automatically be created for you. For example, if the package name was `stillat/test`, the following directory structure would be created when using the PSR-0 autoloader:
+
+~~~
+<output_directory>/
+│── src/
+│   ├── Stillat/
+│   │   ├────── Test/
+├── composer.json
+├── .gitignore
+~~~
+
+This is different that when using the PSR-4 autoloader, as the `src/` directory would just be empty.
+
+
 <a name="phpunit"></a>
 ## PHPUnit Integration
 
@@ -72,6 +99,8 @@ phpunit.xml
 The `tests/` directory will be where your tests will live. An example test (`tests/ExampleTest.php` is already included in this directory (this can be safely deleted).
 
 The `phpunit.xml` file contains the configuration for PHPUnit. It is already configured with sensible defaults and features a customized test suite name.
+
+In addition to creating new directories and files for you, opting in to PHPUnit integration will also update your generated `composer.json` file to include `mockery/mockery` and `phpunit/phpunit` automatically.
 
 <a name="travis"></a>
 ## TravisCI Integration
