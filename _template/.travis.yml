@@ -1,0 +1,22 @@
+language: php
+
+php:
+{% for travisVersion in travisVersions %}
+  - {{ travisVersion.version }}
+{% endfor %}
+
+matrix:
+    allow_failures:
+{% for travisVersion in travisVersions %}
+{% if travisVersion.allowFailure %}
+        - php: {{ travisVersion.version }}
+{% endif %}
+{% endfor %}
+
+sudo: false
+
+install: travis_retry composer install --no-interaction --prefer-source
+
+{% if option('phpunit') %}
+script: vendor/bin/phpunit
+{% endif %}

@@ -1,0 +1,14 @@
+{
+    "name": "stillat/php-package",
+    "description": "A starting point for basic PHP packages. Allows configuration of PHPUnit and TravisCI",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Johnathon Koster",
+            "email": "john@stillat.com"
+        }
+    ],
+    "config": {
+        "vendor-dir": "_newup_vendor"
+    }
+}
